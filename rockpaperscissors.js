@@ -1,18 +1,5 @@
-/*
-rock
--lose if paper
--win if scissors
-- draw
-
-paper
-
-scissors
-*/
-
 let humanScore = 0;
 let computerScore = 0;
-
-
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
