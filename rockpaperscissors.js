@@ -1,5 +1,10 @@
-let humanScore = 0;
-let computerScore = 0;
+let buttons = document.querySelectorAll("button")
+let div = document.querySelector("div")
+
+let humanScore = 0
+let computerScore = 0
+
+
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
@@ -14,14 +19,7 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Rock, paper, or scissors?")
-    return choice.toLowerCase()
-}
-
 function playRound(humanChoice, computerChoice) {
-    console.log("You chose " + humanChoice)
-    console.log("Computer chose " + computerChoice)
     if (humanChoice == "rock") {
         if (computerChoice == "paper") {
             computerScore += 1
@@ -43,18 +41,14 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound(getHumanChoice(), getComputerChoice())
-    }
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        playRound(getComputerChoice(), button.className)
 
-    if (humanScore > computerScore) {
-        console.log("You win!")
-    } else if (humanScore < computerScore) {
-        console.log("You lose!")
-    } else {
-        console.log("It's a tie!")
-    }
-}
-
-playGame()
+        if (computerScore >= 5) {
+            div.textContent = "You: " + humanScore + " | Computer: " + computerScore + " | Computer wins!"
+        } else if (humanScore >= 5) {
+            div.textContent = "You: " + humanScore + " | Computer: " + computerScore + " | You win!"
+        }
+    })
+})
