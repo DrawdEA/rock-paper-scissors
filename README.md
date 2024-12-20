@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Simple rock paper scissors game made with JavaScript
+A simple rock paper scissors game made with JavaScript.
